@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { HelloWorldService } from '../../services/hello-world.service';
+import { HelloWorldService } from '../../services/helloWorld/hello-world.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,13 @@ export class HomeComponent {
     this.value = !this.value;
   }
 
-  constructor(private helloWorldService: HelloWorldService) {
+  logout() {
+    localStorage.removeItem('token');
+    console.log('Logout efetuado com sucesso!');
+    this.router.navigate(['login']);
+  }
+
+  constructor(private helloWorldService: HelloWorldService, private router: Router) {
     this.helloWorldService.getHelloWorld().subscribe({
       next: (data) => {
         console.log(data);
