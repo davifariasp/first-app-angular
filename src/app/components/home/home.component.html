@@ -1,0 +1,16 @@
+<p>Olá {{name()}}</p>
+<img [src]="dogUrl" />
+
+<button (click)="changeValue()">Mostrar o outro botão</button>
+
+@if(value){
+    <button (click)="changeName()">Mudar nome</button>
+}
+
+@for(item of lista; track item){
+    <p>{{item}}</p>
+} @empty {
+    <p>Não há itens</p>
+}
+
+<app-footer></app-footer>
